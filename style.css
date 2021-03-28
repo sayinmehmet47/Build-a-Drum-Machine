@@ -15,15 +15,16 @@ body {
     flex-direction: row;
     padding-bottom: 25px;
 
-
-
 }
 
-#machine {
+
+#drum-machine {
     max-width: 50%;
+    
     
 
 }
+
 
 #info {
     font-size: larger;
