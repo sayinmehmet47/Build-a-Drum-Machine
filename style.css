@@ -1,21 +1,37 @@
-#body {
-
-    margin-left:10%;
-    margin-right:5%;
+body{
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-
+    margin: 0px;
 }
+
+
 #container{
+
 border-radius: 5px;
 background-color:#7efff5;
+display: flex;
+justify-content: center;
+align-items: center;
+padding-right: 7px;
+flex-direction:row;
+
 
 }
 
 #info{
  font-size:larger;
  font-family:Arial, Helvetica, sans-serif;
+}
+
+@media (max-width:370px) {
+   
+    #container{
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        
+        
+        }
+
+       
+
 }
