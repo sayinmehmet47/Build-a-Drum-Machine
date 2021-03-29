@@ -1,19 +1,49 @@
-var Q = function () {
-  $('#Q')[0].play();
-  $('#display').text('Q');
+var general = function (id) {
+ 
+let link=$(`#${id}`).find("source").attr("src")
+
+  var audio = new Audio(link);
+  audio.play();
+ 
+  $('#display').text(id);
 };
 
-$('#Q')
-  .parent()
-  .on('click', function (e) {
-    console.log('sdfsdf');
-    Q();
-    e.preventDefault();
-  });
+
+
+$("#part1").on('click','.drum-pad', function(e) {
+ 
+ 
+  id=$(this).text()
+  general(id)
+
+  console.log(id)
+
+e.preventDefault()
+});
+
+
+
 
 $(document).on('keydown', function (e) {
-  console.log(e.which);
-  if (e.which === 81) {
-    Q();
-  }
+  const key=e.key.toUpperCase()
+  general(key)
+  
+ 
 });
+
+
+//Assigning the src(link) to elements
+
+$(document).ready(function(){
+
+bankOne.map(e=>{
+
+$(`#${e.keyTrigger}`).find("source").attr("src",`${e.url}`)
+
+})
+
+})
+
+
+
+
