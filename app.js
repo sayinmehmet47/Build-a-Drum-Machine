@@ -1,49 +1,49 @@
 var general = function (id) {
- 
-let link=$(`#${id}`).find("source").attr("src")
+  let link = $(`#${id}`).attr('src');
 
   var audio = new Audio(link);
+  audio.volume=voice
   audio.play();
- 
+  
+
   $('#display').text(id);
 };
 
+$('#part1').on('click', '.drum-pad', function (e) {
+  id = $(this).text();
+  general(id);
 
-
-$("#part1").on('click','.drum-pad', function(e) {
- 
- 
-  id=$(this).text()
-  general(id)
-
-  console.log(id)
-
-e.preventDefault()
+  e.preventDefault();
 });
-
-
-
 
 $(document).on('keydown', function (e) {
-  const key=e.key.toUpperCase()
-  general(key)
-  
- 
+  var keyNum = e.which;
+
+  bankOne.map((e) => {
+    if (e.keyCode === keyNum) {
+      console.log(e.keyTrigger);
+
+      $(`#${e.keyTrigger}`).first().click();
+    }
+  });
 });
 
 
-//Assigning the src(link) to elements
-
-$(document).ready(function(){
-
-bankOne.map(e=>{
-
-$(`#${e.keyTrigger}`).find("source").attr("src",`${e.url}`)
-
-})
-
-})
 
 
+$(document).ready(function () {
+  bankOne.map((e) => {
+    $(`#${e.keyTrigger}`).attr('src', `${e.url}`);
+    $(`#${e.keyTrigger}`).parent().attr('id', `${e.id}`);
+  });
+});
+
+var voice=0.5;
+
+$('.range').on('change', function(e) {
+  
+ voice=$("#customRange1").val()/100
 
 
+  e.preventDefault();
+});

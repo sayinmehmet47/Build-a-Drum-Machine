@@ -111,4 +111,3 @@ const bankTwo = [
     url: 'https://s3.amazonaws.com/freecodecamp/drums/Brk_Snr.mp3',
   },
 ];
-
