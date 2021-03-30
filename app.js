@@ -1,10 +1,8 @@
 var general = function (id) {
-  let link = $(`#${id}`).attr('src');
-
-  var audio = new Audio(link);
-  audio.volume=voice
+  var audio = $('#' + id)[0];
+  //var audio = new Audio(link);
+  audio.volume = voice;
   audio.play();
-  
 
   $('#display').text(id);
 };
@@ -16,8 +14,12 @@ $('#part1').on('click', '.drum-pad', function (e) {
   e.preventDefault();
 });
 
-$(document).on('keydown', function (e) {
+$(document).on('keypress', function (e) {
   var keyNum = e.which;
+  if (keyNum > 90) {
+    keyNum -= 32;
+  }
+  console.log(keyNum);
 
   bankOne.map((e) => {
     if (e.keyCode === keyNum) {
@@ -28,9 +30,6 @@ $(document).on('keydown', function (e) {
   });
 });
 
-
-
-
 $(document).ready(function () {
   bankOne.map((e) => {
     $(`#${e.keyTrigger}`).attr('src', `${e.url}`);
@@ -38,12 +37,10 @@ $(document).ready(function () {
   });
 });
 
-var voice=0.5;
+var voice = 0.5;
 
-$('.range').on('change', function(e) {
-  
- voice=$("#customRange1").val()/100
-
+$('.range').on('change', function (e) {
+  voice = $('#customRange1').val() / 100;
 
   e.preventDefault();
 });
