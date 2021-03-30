@@ -77,11 +77,16 @@ $('#switch1').on('change', function (e) {
       $(`#${e.keyTrigger}`).attr('src', `${e.url}`);
       $(`#${e.keyTrigger}`).parent().attr('id', `${e.id}`);
     });
+
+    $('#display').text("bank-2");
+
   } else {
     bankOne.map((e) => {
       $(`#${e.keyTrigger}`).attr('src', `${e.url}`);
       $(`#${e.keyTrigger}`).parent().attr('id', `${e.id}`);
     });
+    $('#display').text("bank-1");
+
   }
 
   console.log(bank);
