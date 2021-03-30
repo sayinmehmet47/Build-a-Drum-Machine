@@ -1,6 +1,11 @@
 var general = function (id) {
+  if (!power) {
+    return;
+  }
+
   var audio = $('#' + id)[0];
   //var audio = new Audio(link);
+
   audio.volume = voice;
   audio.play();
 
@@ -13,6 +18,8 @@ $('#part1').on('click', '.drum-pad', function (e) {
 
   e.preventDefault();
 });
+
+//keyboard
 
 $(document).on('keypress', function (e) {
   var keyNum = e.which;
@@ -29,6 +36,7 @@ $(document).on('keypress', function (e) {
     }
   });
 });
+//assigning the audio
 
 $(document).ready(function () {
   bankOne.map((e) => {
@@ -37,10 +45,46 @@ $(document).ready(function () {
   });
 });
 
+//voice control
 var voice = 0.5;
 
 $('.range').on('change', function (e) {
   voice = $('#customRange1').val() / 100;
+
+  $('#display').text(Math.ceil(voice * 100));
+
+  e.preventDefault();
+});
+
+//power
+var power = true;
+$('#switch').on('change', function (e) {
+  power = $('#flexSwitchCheckChecked').is(':checked');
+
+  console.log(power);
+
+  e.preventDefault();
+});
+//banks
+
+var bank;
+$('#switch1').on('change', function (e) {
+  bank = $('#flexSwitchCheckChecked1').is(':checked');
+
+  console.log(bank);
+  if (bank) {
+    bankTwo.map((e) => {
+      $(`#${e.keyTrigger}`).attr('src', `${e.url}`);
+      $(`#${e.keyTrigger}`).parent().attr('id', `${e.id}`);
+    });
+  } else {
+    bankOne.map((e) => {
+      $(`#${e.keyTrigger}`).attr('src', `${e.url}`);
+      $(`#${e.keyTrigger}`).parent().attr('id', `${e.id}`);
+    });
+  }
+
+  console.log(bank);
 
   e.preventDefault();
 });
